@@ -9,6 +9,8 @@ onready var timerNode = get_node(timerPath)
 
 export (float) var min_tempo_espera
 export (float) var max_tempo_espera
+export (int) var repetir
+
 
 
 # Called when the node enters the scene tree for the first time.
@@ -19,11 +21,11 @@ func _ready():
 	timerNode.start()
 
 
-func _on_Timer_timeout():
+func _on_Timer_timeout():	
 	var spawnInstance = spawnReference.instance()
-	
 	get_parent().add_child(spawnInstance)
 	spawnInstance.set_global_position(get_global_position())
+	
 	
 	timerNode.set_wait_time(rand_range(min_tempo_espera, max_tempo_espera))
 	timerNode.start()

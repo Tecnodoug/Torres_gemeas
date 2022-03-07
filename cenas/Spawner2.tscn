@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scripts/Spawner.gd" type="Script" id=1]
+[ext_resource path="res://cenas/dinheiro.tscn" type="PackedScene" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "spawner_animation"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 30, 0 ), Vector2( 290, 0 ), Vector2( 30, 0 ) ]
+}
+
+[node name="spawner" type="Position2D"]
+position = Vector2( 220.667, 0 )
+script = ExtResource( 1 )
+spawnScene = ExtResource( 2 )
+timerPath = NodePath("Timer")
+min_tempo_espera = 5.0
+max_tempo_espera = 10.0
+repetir = 10
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+anims/spawner_animation = SubResource( 1 )
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

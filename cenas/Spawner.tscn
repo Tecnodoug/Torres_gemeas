@@ -25,8 +25,9 @@ position = Vector2( 220.667, 0 )
 script = ExtResource( 1 )
 spawnScene = ExtResource( 2 )
 timerPath = NodePath("Timer")
-min_tempo_espera = 0.5
+min_tempo_espera = 1.0
 max_tempo_espera = 3.0
+repetir = 2
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

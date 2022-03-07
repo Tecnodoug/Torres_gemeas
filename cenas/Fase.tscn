@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://sprites_rascunhos/torres.png" type="Texture" id=1]
 [ext_resource path="res://cenas/player.tscn" type="PackedScene" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://cenas/Spawner.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scripts/Fase.gd" type="Script" id=5]
 [ext_resource path="res://fontes/Super Mario Bros. 2.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://cenas/dinheiro.tscn" type="PackedScene" id=7]
+[ext_resource path="res://cenas/Spawner2.tscn" type="PackedScene" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 160, 4 )
@@ -14,6 +16,12 @@ extents = Vector2( 160, 4 )
 size = 8
 outline_size = 1
 outline_color = Color( 0.984314, 0.0196078, 0.0196078, 1 )
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 8
+outline_size = 1
+outline_color = Color( 0.486275, 0.964706, 0.0235294, 1 )
 font_data = ExtResource( 6 )
 
 [node name="Fase" type="Node2D"]
@@ -36,6 +44,7 @@ __meta__ = {
 shape = SubResource( 1 )
 
 [node name="mulheres" parent="." instance=ExtResource( 3 )]
+position = Vector2( 255, 2 )
 
 [node name="spawner" parent="." instance=ExtResource( 4 )]
 
@@ -53,3 +62,24 @@ custom_fonts/font = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Cash" type="Label" parent="HUD"]
+anchor_left = 0.756
+anchor_top = 0.025
+anchor_right = 0.956
+anchor_bottom = 0.05
+margin_left = 0.0799866
+margin_right = 0.0799866
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.0784314, 0.282353, 0.054902, 1 )
+custom_colors/font_outline_modulate = Color( 0.509804, 0.956863, 0.0313726, 1 )
+custom_colors/font_color_shadow = Color( 0.639216, 0.94902, 0.0431373, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="dinheiro" parent="." instance=ExtResource( 7 )]
+position = Vector2( 64, 1 )
+
+[node name="spawner2" parent="." instance=ExtResource( 8 )]
+min_tempo_espera = 1.0
